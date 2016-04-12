@@ -50,6 +50,7 @@
     return self;
 }
 
+//TODO: Add method `presentInView`
 #pragma mark- Setters
 -(void) setHighlightedColor:(UIColor *) highlightedColor {
     _highlightedColor = highlightedColor;
@@ -138,7 +139,7 @@
     if (_imageView)
         return _imageView;
     
-    _imageView = [[UIImageView alloc] initWithFrame:self.frame];
+    _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     
     return _imageView;
 }
