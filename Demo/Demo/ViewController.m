@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "DMDraggableView.h"
 
-@interface ViewController ()
+@interface ViewController () <DMDraggableViewDelegate>
 
 @end
 
@@ -17,11 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    DMDraggableView *dragView = [[DMDraggableView alloc] initWithDelegate:self withFrame:CGRectMake(100, 100, 50, 50) inView:self.view withDragEndBehaviour:DragEndBehaviourReset];
+    
+    [self.view addSubview:dragView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

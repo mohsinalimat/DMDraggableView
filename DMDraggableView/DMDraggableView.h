@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Utils.h"
+#import "UIView+Customize.h"
 
 
 typedef enum {
@@ -17,12 +19,19 @@ typedef enum {
     
 } ValueUnit;
 
+typedef enum {
+    
+    DragEndBehaviourReset, /* Default: Reset view to origin */
+    DragEndBehaviourKeep, /* Keep view where drag ended */
+    DragEndBehaviourBorders /* Keep view close to borders */
+    
+} DragEndBehaviour;
+
 @protocol DMDraggableViewDelegate;
 
 @interface DMDraggableView : UIView
 
 @property (nonatomic) CGFloat value; /* Value, in this case is seconds */
-
 @property (nonatomic) BOOL selected;
 @property (nonatomic) UIColor *titleColor;
 @property (nonatomic, strong) NSString *title;
@@ -31,13 +40,12 @@ typedef enum {
 @property (nonatomic, strong) UIColor *normalColor; /* View Border Color Normal State */
 @property (nonatomic) UIView *targetView; /* Location on which the item is considered to be "inside" */
 @property (nonatomic) id<DMDraggableViewDelegate> delegate;
-@property (nonatomic) BOOL shouldStickToBorders; /* Frame will always be close to the borders */
 
 //TODO: Add circular property
 
--(id) initWithDelegate:(id<DMDraggableViewDelegate>) delegate withFrame: (CGRect) frame inView:(UIView *) superView;
+-(id) initWithDelegate:(id<DMDraggableViewDelegate>) delegate withFrame: (CGRect) frame inView:(UIView *) superView withDragEndBehaviour:(DragEndBehaviour) dragEndBehaviour;
 
--(void) resetItemLocation;
+-(void) manageDragEndBehaviour;
 
 
 

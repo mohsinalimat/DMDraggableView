@@ -13,6 +13,9 @@
 		BDED79A71CBD47D800C088F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDED79A51CBD47D800C088F6 /* Main.storyboard */; };
 		BDED79A91CBD47D800C088F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDED79A81CBD47D800C088F6 /* Assets.xcassets */; };
 		BDED79AC1CBD47D800C088F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDED79AA1CBD47D800C088F6 /* LaunchScreen.storyboard */; };
+		BDED79B51CBD483700C088F6 /* DMDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED79B41CBD483700C088F6 /* DMDraggableView.m */; };
+		BDED79BE1CBD4F2B00C088F6 /* UIView+Customize.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED79BD1CBD4F2B00C088F6 /* UIView+Customize.m */; };
+		BDED79C21CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED79C11CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,14 @@
 		BDED79A81CBD47D800C088F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDED79AB1CBD47D800C088F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDED79AD1CBD47D900C088F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDED79B31CBD483700C088F6 /* DMDraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMDraggableView.h; path = ../../DMDraggableView/DMDraggableView.h; sourceTree = "<group>"; };
+		BDED79B41CBD483700C088F6 /* DMDraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMDraggableView.m; path = ../../DMDraggableView/DMDraggableView.m; sourceTree = "<group>"; };
+		BDED79B71CBD48E200C088F6 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = ../../DMDraggableView/Utils.h; sourceTree = "<group>"; };
+		BDED79B81CBD48E200C088F6 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = ../../DMDraggableView/Utils.m; sourceTree = "<group>"; };
+		BDED79BC1CBD4F2B00C088F6 /* UIView+Customize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Customize.h"; path = "../../DMDraggableView/UIView+Customize.h"; sourceTree = "<group>"; };
+		BDED79BD1CBD4F2B00C088F6 /* UIView+Customize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Customize.m"; path = "../../DMDraggableView/UIView+Customize.m"; sourceTree = "<group>"; };
+		BDED79C01CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DMDraggableView+DragEndBehaviourUtils.h"; path = "../../DMDraggableView/DMDraggableView+DragEndBehaviourUtils.h"; sourceTree = "<group>"; };
+		BDED79C11CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DMDraggableView+DragEndBehaviourUtils.m"; path = "../../DMDraggableView/DMDraggableView+DragEndBehaviourUtils.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +69,7 @@
 		BDED799B1CBD47D800C088F6 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				BDED79B61CBD483C00C088F6 /* DMDraggableView */,
 				BDED799F1CBD47D800C088F6 /* AppDelegate.h */,
 				BDED79A01CBD47D800C088F6 /* AppDelegate.m */,
 				BDED79A21CBD47D800C088F6 /* ViewController.h */,
@@ -77,6 +89,29 @@
 				BDED799D1CBD47D800C088F6 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BDED79B61CBD483C00C088F6 /* DMDraggableView */ = {
+			isa = PBXGroup;
+			children = (
+				BDED79BF1CBD637C00C088F6 /* Categories */,
+				BDED79B31CBD483700C088F6 /* DMDraggableView.h */,
+				BDED79B41CBD483700C088F6 /* DMDraggableView.m */,
+				BDED79BC1CBD4F2B00C088F6 /* UIView+Customize.h */,
+				BDED79BD1CBD4F2B00C088F6 /* UIView+Customize.m */,
+				BDED79B71CBD48E200C088F6 /* Utils.h */,
+				BDED79B81CBD48E200C088F6 /* Utils.m */,
+			);
+			name = DMDraggableView;
+			sourceTree = "<group>";
+		};
+		BDED79BF1CBD637C00C088F6 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				BDED79C01CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.h */,
+				BDED79C11CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,8 +185,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDED79A41CBD47D800C088F6 /* ViewController.m in Sources */,
+				BDED79C21CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.m in Sources */,
+				BDED79B51CBD483700C088F6 /* DMDraggableView.m in Sources */,
 				BDED79A11CBD47D800C088F6 /* AppDelegate.m in Sources */,
 				BDED799E1CBD47D800C088F6 /* main.m in Sources */,
+				BDED79BE1CBD4F2B00C088F6 /* UIView+Customize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

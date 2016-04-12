@@ -7,6 +7,7 @@
 //
 
 #import "DMDraggableView.h"
+#import "DMDraggableView+DragEndBehaviourUtils.h"
 //#import "UIView+Animations.h"
 //#import "UIView+Shadow.h"
 //#import "Colours.h"
@@ -22,14 +23,16 @@
 @property (nonatomic) UIView *superView;
 @property BOOL isOnTarget;
 @property (nonatomic) CGRect lastValidFrame; // will retain the last valid frame. Invalid = outside superview
+@property (nonatomic) CGRect  defaultFrame; // view default frame
 @property (nonatomic) UIView *highlightedEffectView;
 @property BOOL shouldResetViewOrigin;
+@property (nonatomic) DragEndBehaviour dragEndBehaviour;
 
 @end
 
 @implementation DMDraggableView
 
--(id) initWithDelegate:(id<DMDraggableViewDelegate>) delegate withFrame: (CGRect) frame inView:(UIView *) superView {
+-(id) initWithDelegate:(id<DMDraggableViewDelegate>) delegate withFrame: (CGRect) frame inView:(UIView *) superView withDragEndBehaviour:(DragEndBehaviour) dragEndBehaviour {
     self = [super initWithFrame:frame];
     
     if (self) {
@@ -39,6 +42,8 @@
         _originalCenter = self.center;
         _size = CGRectGetHeight(self.frame);
         _lastValidFrame = frame;
+        _defaultFrame = frame;
+        _dragEndBehaviour = dragEndBehaviour;
         [self prepareUI];
     }
     
@@ -53,7 +58,7 @@
 -(void) setNormalColor:(UIColor *)normalColor {
     _normalColor = normalColor;
     
-    self.layer.borderColor = _normalColor.CGColor;
+    self.backgroundColor = _normalColor;
     
     if (self.targetView != nil) {
         if (!self.selected)
@@ -82,9 +87,32 @@
     [self addSubview:self.imageView];
 }
 
--(void) setShouldStickToBorders:(BOOL)shouldStickToBorders {
-    _shouldStickToBorders = shouldStickToBorders;
+-(void) setSelected:(BOOL)selected {
+    _selected = selected;
+    
+    if (_selected == true) {
+        
+        //        [UIView animateWithDuration:0.1 animations:^{
+        //            [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, self.size + 10, self.size + 10)];
+        //            [self circularShape];
+        //        }];
+        
+        self.layer.borderColor = self.highlightedColor ? self.highlightedColor.CGColor : [UIColor redColor].CGColor;
+    }
+    
+    else {
+        //        [UIView animateWithDuration:0.1 animations:^{
+        //            [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, self.size, self.size)];
+        //            [self circularShape];
+        //        }];
+        
+        self.layer.borderColor = self.normalColor ? self.normalColor.CGColor : [UIColor lightGrayColor].CGColor;
+    }
 }
+
+//-(void) setDragEndBehaviour:(DragEndBehaviour)dragEndBehaviour {
+//    _dragEndBehaviour = dragEndBehaviour;
+//}
 
 
 #pragma mark- Initializer
@@ -219,9 +247,7 @@
         }
     }
     
-    [self.targetView.layer setShadowOpacity:0.0];
-    
-    [self resetItemLocation];
+    [self manageDragEndBehaviour];
 }
 
 
@@ -286,55 +312,41 @@
     [self addGestureRecognizer:self.panGestureRecognizer];
     [self addGestureRecognizer:self.tapGestureRecognizer];
     [self addSubview:self.titleLabel];
+    [self.superView addSubview:self];
     self.layer.borderWidth = 1.0;
-    self.layer.borderColor = self.normalColor ? self.normalColor.CGColor : [UIColor lightGrayColor].CGColor;
+    self.backgroundColor = self.normalColor ? self.normalColor : [UIColor lightGrayColor];
+    [self circular];
 }
 
--(void) setSelected:(BOOL)selected {
-    _selected = selected;
-    
-    if (_selected == true) {
-        
-        //        [UIView animateWithDuration:0.1 animations:^{
-        //            [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, self.size + 10, self.size + 10)];
-        //            [self circularShape];
-        //        }];
-        
-        self.layer.borderColor = self.highlightedColor ? self.highlightedColor.CGColor : [UIColor redColor].CGColor;
-    }
-    
-    else {
-        //        [UIView animateWithDuration:0.1 animations:^{
-        //            [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, self.size, self.size)];
-        //            [self circularShape];
-        //        }];
-        
-        self.layer.borderColor = self.normalColor ? self.normalColor.CGColor : [UIColor lightGrayColor].CGColor;
-    }
-}
 
 
 #pragma mark- Methods
--(void) resetItemLocation {
+-(void) manageDragEndBehaviour {
     
-    
-    if (!self.shouldResetViewOrigin) {
-        return;
+    switch (self.dragEndBehaviour) {
+        case DragEndBehaviourKeep:
+            
+            [self manageDragEndBehaviourKeep:self.lastValidFrame];
+            
+            break;
+            
+        case DragEndBehaviourReset:
+            
+            [self manageDragEndBehaviourReset:self.defaultFrame];
+            
+            break;
+            
+        case DragEndBehaviourBorders:
+            
+            break;
+            
+        default:
+            break;
     }
     
     self.userInteractionEnabled = false;
-    
-    self.targetView.backgroundColor = self.normalColor;
-    
-    [UIView animateWithDuration:0.2f animations:^{
-        self.frame = self.lastValidFrame;
-        
-    } completion: ^(BOOL finished) {
-        if (finished)
-            self.userInteractionEnabled = true;
-        self.alpha = 1.0f;
-    }];
 }
+
 
 -(void)dealloc {
     //TODO: Clean memory
