@@ -7,7 +7,7 @@
 //
 
 #import "DMDraggableView.h"
-#import "DMDraggableView+DragEndBehaviourUtils.h"
+#import "DMDraggableView+DragEndBehaviorUtils.h"
 //#import "UIView+Animations.h"
 //#import "UIView+Shadow.h"
 //#import "Colours.h"
@@ -26,13 +26,13 @@
 @property (nonatomic) CGRect  defaultFrame; // view default frame
 @property (nonatomic) UIView *highlightedEffectView;
 @property BOOL shouldResetViewOrigin;
-@property (nonatomic) DragEndBehaviour dragEndBehaviour;
+@property (nonatomic) DragEndBehavior dragEndBehavior;
 
 @end
 
 @implementation DMDraggableView
 
--(id) initWithDelegate:(id<DMDraggableViewDelegate>) delegate withFrame: (CGRect) frame inView:(UIView *) superView withDragEndBehaviour:(DragEndBehaviour) dragEndBehaviour {
+-(id) initWithDelegate:(id<DMDraggableViewDelegate>) delegate withFrame: (CGRect) frame inView:(UIView *) superView withDragEndBehaviour:(DragEndBehavior) dragEndBehavior {
     self = [super initWithFrame:frame];
     
     if (self) {
@@ -43,7 +43,7 @@
         _size = CGRectGetHeight(self.frame);
         _lastValidFrame = frame;
         _defaultFrame = frame;
-        _dragEndBehaviour = dragEndBehaviour;
+        _dragEndBehavior = dragEndBehavior;
         [self prepareUI];
     }
     
@@ -324,20 +324,20 @@
 #pragma mark- Methods
 -(void) manageDragEndBehaviour {
     
-    switch (self.dragEndBehaviour) {
-        case DragEndBehaviourKeep:
+    switch (self.dragEndBehavior) {
+        case DragEndBehaviorKeep:
             
-            [self manageDragEndBehaviourKeep:self.lastValidFrame];
-            
-            break;
-            
-        case DragEndBehaviourReset:
-            
-            [self manageDragEndBehaviourReset:self.defaultFrame];
+            [self manageDragEndBehaviorKeep:self.lastValidFrame];
             
             break;
             
-        case DragEndBehaviourBorders:
+        case DragEndBehaviorReset:
+            
+            [self manageDragEndBehaviorReset:self.defaultFrame];
+            
+            break;
+            
+        case DragEndBehaviorBorders:
             
             break;
             

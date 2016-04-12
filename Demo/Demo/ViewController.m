@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    DMDraggableView *dragView = [[DMDraggableView alloc] initWithDelegate:self withFrame:CGRectMake(100, 100, 50, 50) inView:self.view withDragEndBehaviour:DragEndBehaviourReset];
+    DMDraggableView *dragView = [[DMDraggableView alloc] initWithDelegate:self withFrame:CGRectMake(100, 100, 50, 50) inView:self.view withDragEndBehaviour:DragEndBehaviorReset];
     
     [self.view addSubview:dragView];
 }

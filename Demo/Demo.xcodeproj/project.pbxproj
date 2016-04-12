@@ -15,7 +15,7 @@
 		BDED79AC1CBD47D800C088F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDED79AA1CBD47D800C088F6 /* LaunchScreen.storyboard */; };
 		BDED79B51CBD483700C088F6 /* DMDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED79B41CBD483700C088F6 /* DMDraggableView.m */; };
 		BDED79BE1CBD4F2B00C088F6 /* UIView+Customize.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED79BD1CBD4F2B00C088F6 /* UIView+Customize.m */; };
-		BDED79C21CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED79C11CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.m */; };
+		BDED79C21CBD63E800C088F6 /* DMDraggableView+DragEndBehaviorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED79C11CBD63E800C088F6 /* DMDraggableView+DragEndBehaviorUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +35,8 @@
 		BDED79B81CBD48E200C088F6 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = ../../DMDraggableView/Utils.m; sourceTree = "<group>"; };
 		BDED79BC1CBD4F2B00C088F6 /* UIView+Customize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Customize.h"; path = "../../DMDraggableView/UIView+Customize.h"; sourceTree = "<group>"; };
 		BDED79BD1CBD4F2B00C088F6 /* UIView+Customize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Customize.m"; path = "../../DMDraggableView/UIView+Customize.m"; sourceTree = "<group>"; };
-		BDED79C01CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DMDraggableView+DragEndBehaviourUtils.h"; path = "../../DMDraggableView/DMDraggableView+DragEndBehaviourUtils.h"; sourceTree = "<group>"; };
-		BDED79C11CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DMDraggableView+DragEndBehaviourUtils.m"; path = "../../DMDraggableView/DMDraggableView+DragEndBehaviourUtils.m"; sourceTree = "<group>"; };
+		BDED79C01CBD63E800C088F6 /* DMDraggableView+DragEndBehaviorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DMDraggableView+DragEndBehaviorUtils.h"; path = "../../DMDraggableView/DMDraggableView+DragEndBehaviorUtils.h"; sourceTree = "<group>"; };
+		BDED79C11CBD63E800C088F6 /* DMDraggableView+DragEndBehaviorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DMDraggableView+DragEndBehaviorUtils.m"; path = "../../DMDraggableView/DMDraggableView+DragEndBehaviorUtils.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +108,8 @@
 		BDED79BF1CBD637C00C088F6 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				BDED79C01CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.h */,
-				BDED79C11CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.m */,
+				BDED79C01CBD63E800C088F6 /* DMDraggableView+DragEndBehaviorUtils.h */,
+				BDED79C11CBD63E800C088F6 /* DMDraggableView+DragEndBehaviorUtils.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -185,7 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDED79A41CBD47D800C088F6 /* ViewController.m in Sources */,
-				BDED79C21CBD63E800C088F6 /* DMDraggableView+DragEndBehaviourUtils.m in Sources */,
+				BDED79C21CBD63E800C088F6 /* DMDraggableView+DragEndBehaviorUtils.m in Sources */,
 				BDED79B51CBD483700C088F6 /* DMDraggableView.m in Sources */,
 				BDED79A11CBD47D800C088F6 /* AppDelegate.m in Sources */,
 				BDED799E1CBD47D800C088F6 /* main.m in Sources */,
@@ -338,6 +338,7 @@
 				BDED79B21CBD47D900C088F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

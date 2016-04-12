@@ -21,11 +21,11 @@ typedef enum {
 
 typedef enum {
     
-    DragEndBehaviourReset, /* Default: Reset view to origin */
-    DragEndBehaviourKeep, /* Keep view where drag ended */
-    DragEndBehaviourBorders /* Keep view close to borders */
+    DragEndBehaviorReset, /* Default: Reset view to origin */
+    DragEndBehaviorKeep, /* Keep view where drag ended */
+    DragEndBehaviorBorders /* Keep view close to borders */
     
-} DragEndBehaviour;
+} DragEndBehavior;
 
 @protocol DMDraggableViewDelegate;
 
@@ -43,9 +43,9 @@ typedef enum {
 
 //TODO: Add circular property
 
--(id) initWithDelegate:(id<DMDraggableViewDelegate>) delegate withFrame: (CGRect) frame inView:(UIView *) superView withDragEndBehaviour:(DragEndBehaviour) dragEndBehaviour;
+-(id) initWithDelegate:(id<DMDraggableViewDelegate>) delegate withFrame: (CGRect) frame inView:(UIView *) superView withDragEndBehaviour:(DragEndBehavior) dragEndBehavior;
 
--(void) manageDragEndBehaviour;
+-(void) manageDragEndBehavior;
 
 
 

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Davaur. All rights reserved.
 //
 
-#import "DMDraggableView+DragEndBehaviourUtils.h"
+#import "DMDraggableView+DragEndBehaviorUtils.h"
 
 struct FrameQuadrant {
     
@@ -17,9 +17,9 @@ struct FrameQuadrant {
 
 };
 
-@implementation DMDraggableView (DragEndBehaviourUtils)
+@implementation DMDraggableView (DragEndBehaviorUtils)
 
--(void) manageDragEndBehaviourKeep:(CGRect) lastValidFrame {
+-(void) manageDragEndBehaviorKeep:(CGRect) lastValidFrame {
     [UIView animateWithDuration:0.2f animations:^{
         self.frame = lastValidFrame;
         
@@ -30,7 +30,7 @@ struct FrameQuadrant {
     }];
 }
 
--(void) manageDragEndBehaviourReset:(CGRect) defaultFrame {
+-(void) manageDragEndBehaviorReset:(CGRect) defaultFrame {
     
     
     [UIView animateWithDuration:0.3f delay:0.0f usingSpringWithDamping:0.7f initialSpringVelocity:0.5f options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -49,7 +49,7 @@ struct FrameQuadrant {
 //    }];
 }
 
--(void) manageDragEndBehaviourBorders {
+-(void) manageDragEndBehaviorBorders {
     
     CGRect superViewFrame = [self.superview frame];
     
