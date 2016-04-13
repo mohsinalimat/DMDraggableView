@@ -7,6 +7,7 @@
 //
 
 #import "DMDraggableView+DragEndBehaviorUtils.h"
+#import "UIApplication+TopMostVC.h"
 
 struct FrameQuadrant {
     
@@ -42,15 +43,26 @@ struct FrameQuadrant {
 
 }
 
--(void) manageDragEndBehaviorBordersWithLastValidFrame:(CGRect) lastValidFrame shouldReset:(BOOL) shouldReset {
+-(void) manageDragEndBehaviorBoundsWithLastValidFrame:(CGRect) lastValidFrame shouldReset:(BOOL) shouldReset {
     
     if (shouldReset) {
         [self manageDragEndBehaviorKeep:lastValidFrame];
         return;
     }
     
+    CGFloat kDistanceToBounds = 10.0f;
     
-    CGRect superViewFrame = [self.superview frame];
+    CGFloat topOriginY = 10.0f;
+    UIViewController *topVC = [UIApplication topMostVC];
+    
+    if ([topVC isKindOfClass:[UINavigationController class]])
+        topOriginY = kNavigationBarHeight + kDistanceToBounds;
+    
+    UIView * superView = self.superview;
+    CGRect superViewFrame = [superView frame];
+    
+    // move self to the front
+    [superView bringSubviewToFront:self];
     
     CGFloat superViewWidth = CGRectGetWidth(superViewFrame);
     CGFloat superViewHeight = CGRectGetHeight(superViewFrame);
@@ -68,6 +80,10 @@ struct FrameQuadrant {
     CGRect bottomQuadrant = CGRectMake(0, bottomQuadrantOriginY, superViewWidth, quadrantHeight);
     CGRect rightQuadrant = CGRectMake(rightQuadrantOriginX, quadrantHeight, quadrantWidth, sideQuadrantHeight);
     
+    
+    
+    
+//    if ([self.superview navigationController])
     
     /*******************
     
@@ -89,7 +105,7 @@ struct FrameQuadrant {
     if (CGRectContainsPoint(topQuadrant, self.frame.origin)) {
         
         [UIView animateWithDuration:0.3f delay:0.0f usingSpringWithDamping:0.7f initialSpringVelocity:0.5f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self setFrame:CGRectMake(self.frame.origin.x, 10, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
+            [self setFrame:CGRectMake(self.frame.origin.x, topOriginY, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
         } completion:^(BOOL finished) {
             if (finished)
                 self.userInteractionEnabled = true;
@@ -99,7 +115,7 @@ struct FrameQuadrant {
     else if (CGRectContainsPoint(leftQuadrant, self.frame.origin)) {
         
         [UIView animateWithDuration:0.3f delay:0.0f usingSpringWithDamping:0.7f initialSpringVelocity:0.5f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self setFrame:CGRectMake(10, self.frame.origin.y, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
+            [self setFrame:CGRectMake(kDistanceToBounds, self.frame.origin.y, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
         } completion:^(BOOL finished) {
             if (finished)
                 self.userInteractionEnabled = true;
@@ -109,7 +125,7 @@ struct FrameQuadrant {
     else if (CGRectContainsPoint(bottomQuadrant, self.frame.origin)) {
         
         [UIView animateWithDuration:0.3f delay:0.0f usingSpringWithDamping:0.7f initialSpringVelocity:0.5f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self setFrame:CGRectMake(self.frame.origin.x, superViewHeight - (CGRectGetHeight(self.frame) + 10), CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
+            [self setFrame:CGRectMake(self.frame.origin.x, superViewHeight - (CGRectGetHeight(self.frame) + kDistanceToBounds), CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
         } completion:^(BOOL finished) {
             if (finished)
                 self.userInteractionEnabled = true;
@@ -119,7 +135,7 @@ struct FrameQuadrant {
     else if (CGRectContainsPoint(rightQuadrant, self.frame.origin)) {
         
         [UIView animateWithDuration:0.3f delay:0.0f usingSpringWithDamping:0.7f initialSpringVelocity:0.5f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self setFrame:CGRectMake(superViewWidth -(CGRectGetWidth(self.frame) + 10), self.frame.origin.y, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
+            [self setFrame:CGRectMake(superViewWidth -(CGRectGetWidth(self.frame) + kDistanceToBounds), self.frame.origin.y, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
         } completion:^(BOOL finished) {
             if (finished)
                 self.userInteractionEnabled = true;

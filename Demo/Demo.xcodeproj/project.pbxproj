@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BDB467361CBEB22E00E36F91 /* UIApplication+TopMostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB467351CBEB22E00E36F91 /* UIApplication+TopMostVC.m */; };
 		BDED799E1CBD47D800C088F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED799D1CBD47D800C088F6 /* main.m */; };
 		BDED79A11CBD47D800C088F6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED79A01CBD47D800C088F6 /* AppDelegate.m */; };
 		BDED79A41CBD47D800C088F6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDED79A31CBD47D800C088F6 /* ViewController.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BDB467341CBEB22E00E36F91 /* UIApplication+TopMostVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication+TopMostVC.h"; path = "../../DMDraggableView/UIApplication+TopMostVC.h"; sourceTree = "<group>"; };
+		BDB467351CBEB22E00E36F91 /* UIApplication+TopMostVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+TopMostVC.m"; path = "../../DMDraggableView/UIApplication+TopMostVC.m"; sourceTree = "<group>"; };
 		BDED79991CBD47D800C088F6 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDED799D1CBD47D800C088F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BDED799F1CBD47D800C088F6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 			children = (
 				BDED79C01CBD63E800C088F6 /* DMDraggableView+DragEndBehaviorUtils.h */,
 				BDED79C11CBD63E800C088F6 /* DMDraggableView+DragEndBehaviorUtils.m */,
+				BDB467341CBEB22E00E36F91 /* UIApplication+TopMostVC.h */,
+				BDB467351CBEB22E00E36F91 /* UIApplication+TopMostVC.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				BDED79A11CBD47D800C088F6 /* AppDelegate.m in Sources */,
 				BDED799E1CBD47D800C088F6 /* main.m in Sources */,
 				BDED79BE1CBD4F2B00C088F6 /* UIView+Customize.m in Sources */,
+				BDB467361CBEB22E00E36F91 /* UIApplication+TopMostVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

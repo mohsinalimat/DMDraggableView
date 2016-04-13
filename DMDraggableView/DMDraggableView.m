@@ -337,9 +337,9 @@
             
             break;
             
-        case DragEndBehaviorBorders:
+        case DragEndBehaviorBounds:
             
-            [self manageDragEndBehaviorBordersWithLastValidFrame:self.lastValidFrame shouldReset:self.shouldResetViewOrigin];
+            [self manageDragEndBehaviorBoundsWithLastValidFrame:self.lastValidFrame shouldReset:self.shouldResetViewOrigin];
             
             break;
             

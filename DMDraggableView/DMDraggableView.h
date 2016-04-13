@@ -19,11 +19,13 @@ typedef enum {
     
 } ValueUnit;
 
+static const CGFloat kNavigationBarHeight = 64.0f;
+
 typedef enum {
     
     DragEndBehaviorReset, /* Default: Reset view to origin */
     DragEndBehaviorKeep, /* Keep view where drag ended */
-    DragEndBehaviorBorders /* Keep view close to borders */
+    DragEndBehaviorBounds /* Keep view close to borders */
     
 } DragEndBehavior;
 
