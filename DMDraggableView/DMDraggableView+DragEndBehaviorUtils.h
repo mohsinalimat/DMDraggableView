@@ -12,5 +12,6 @@
 
 -(void) manageDragEndBehaviorKeep:(CGRect) lastValidFrame;
 -(void) manageDragEndBehaviorReset:(CGRect) defaultFrame;
+-(void) manageDragEndBehaviorBordersWithLastValidFrame:(CGRect) lastValidFrame shouldReset:(BOOL) shouldReset;
 
 @end

@@ -248,7 +248,7 @@
         }
     }
     
-    [self manageDragEndBehaviour];
+    [self manageDragEndBehavior];
 }
 
 
@@ -322,7 +322,7 @@
 
 
 #pragma mark- Methods
--(void) manageDragEndBehaviour {
+-(void) manageDragEndBehavior {
     
     switch (self.dragEndBehavior) {
         case DragEndBehaviorKeep:
@@ -338,6 +338,8 @@
             break;
             
         case DragEndBehaviorBorders:
+            
+            [self manageDragEndBehaviorBordersWithLastValidFrame:self.lastValidFrame shouldReset:self.shouldResetViewOrigin];
             
             break;
             

@@ -45,7 +45,7 @@ typedef enum {
 
 -(id) initWithDelegate:(id<DMDraggableViewDelegate>) delegate withFrame: (CGRect) frame inView:(UIView *) superView withDragEndBehaviour:(DragEndBehavior) dragEndBehavior;
 
--(void) manageDragEndBehavior;
+//-(void) manageDragEndBehavior;
 
 
 
